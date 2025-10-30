@@ -90,13 +90,6 @@ class HexParser:
                 results["32位无符号整数(小端)"] = struct.unpack('<I', bytes_data[:4])[0]
                 results["32位有符号整数(小端)"] = struct.unpack('<i', bytes_data[:4])[0]
             
-            # 64位整数
-            if len(bytes_data) >= 8:
-                results["64位无符号整数(大端)"] = struct.unpack('>Q', bytes_data[:8])[0]
-                results["64位有符号整数(大端)"] = struct.unpack('>q', bytes_data[:8])[0]
-                results["64位无符号整数(小端)"] = struct.unpack('<Q', bytes_data[:8])[0]
-                results["64位有符号整数(小端)"] = struct.unpack('<q', bytes_data[:8])[0]
-            
             return results
         except Exception as e:
             return {"错误": f"整数解析失败: {str(e)}"}
@@ -155,34 +148,30 @@ class HexParser:
 # 侧边栏配置
 with st.sidebar:
     st.header("⚙️ 解析配置")
-    parse_options = st.multiselect(
+    
+    parse_options = st.selectbox(
         "选择解析类型",
         ["整数类型", "字符串类型"],
         default=["整数类型"]
     )
     st.markdown("---")
+
     st.header("📊 示例数据")
-    
     example_data = st.selectbox(
         "选择示例数据",
-        ["整数示例", "字符串示例", "MAC地址", "IP地址"]
+        ["整数示例", "字符串示例"]
     )
     
-
 # 主界面
 st.header("📥 输入十六进制数据")
-
 # 示例数据映射
 example_map = {
     "整数示例": "DEADBEEF",
-    "字符串示例": "48656C6C6F20576F726C64",
-    "MAC地址": "A1B2C3D4E5F6",
-    "IP地址": "C0A80101",
+    "字符串示例": "0x48 0x49 0x50 或者 6A 6B 20 57",
 }
 
 # 数据输入区域
-col1, col2 = st.columns([3, 1])
-
+col1 = st.columns([3, 1])
 with col1:
         default_hex = example_map.get(example_data, "")
         hex_input = st.text_area(
@@ -239,47 +228,7 @@ if st.session_state.parsed_results:
                 st.write("**字符串解析:**")
                 st.code(f"ASCII: {strings.get('ASCII字符串', '')}")
     
-
-
-# 历史记录
-if len(st.session_state.parsed_results) > 1:
-    with st.expander("📜 解析历史"):
-        history_data = []
-        for i, result in enumerate(st.session_state.parsed_results):
-            history_data.append({
-                "序号": i + 1,
-                "时间": result["timestamp"].strftime("%H:%M:%S"),
-                "数据长度": len(HexParser.clean_hex_string(result["original_input"])) // 2,
-                "输入预览": result["original_input"][:20] + "..." if len(result["original_input"]) > 20 else result["original_input"]
-            })
-        
-        history_df = pd.DataFrame(history_data)
-        st.dataframe(history_df, use_container_width=True)
-        
-        if st.button("清除历史记录"):
-            st.session_state.parsed_results = []
-            st.rerun()
-
-# 使用技巧
-with st.expander("💡 使用技巧"):
-    st.markdown("""
-    **十六进制格式支持:**
-    - 带空格: `48 65 6C 6C 6F`
-    - 不带空格: `48656C6C6F`
-    - 带0x前缀: `0x48 0x65 0x6C`
-    - 混合格式: `0x48 65 0x6C 6C 6F`
-    
-    **常见用途:**
-    - 网络协议分析
-    - 嵌入式系统调试
-    - 文件格式解析
-    - 数据转换验证
-    
-    **解析提示:**
-    - 整数和浮点数会尝试大端序和小端序两种格式
-    - 字符串解析会尝试多种编码
-    - 特定格式会自动识别（MAC、IP、颜色等）
-    """)
+#展现数据
 
 # CSS样式
 st.markdown("""
