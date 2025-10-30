@@ -152,7 +152,6 @@ with st.sidebar:
     parse_options = st.selectbox(
         "选择解析类型",
         ["整数类型", "字符串类型"],
-        default=["整数类型"]
     )
     st.markdown("---")
 
@@ -195,7 +194,7 @@ if st.button("🚀 开始解析", type="primary", use_container_width=True):
             if "整数类型" in parse_options:
                 results["integers"] = HexParser.parse_integers(hex_input)
 
-            if "字符串类型" in parse_options:
+            elif "字符串类型" in parse_options:
                 results["strings"] = HexParser.parse_strings(hex_input)
 
             st.session_state.parsed_results.append(results)
