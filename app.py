@@ -5,7 +5,7 @@ import struct
 import binascii
 import re
 from typing import Dict, List, Any
-import matplotlib.pyplot as plt
+
 from io import StringIO
 
 # 页面配置
@@ -389,44 +389,12 @@ if st.session_state.parsed_results:
         if "basic_info" in latest_result and "字节数组" in latest_result["basic_info"]:
             bytes_data = latest_result["basic_info"]["字节数组"]
             
-            # 创建两个图表
-            col1, col2 = st.columns(2)
-            
-            with col1:
-                # 字节值分布图
-                fig1, ax1 = plt.subplots(figsize=(8, 4))
-                ax1.bar(range(len(bytes_data)), bytes_data, alpha=0.7, color='skyblue')
-                ax1.set_xlabel('字节位置')
-                ax1.set_ylabel('字节值 (0-255)')
-                ax1.set_title('字节值分布')
-                ax1.grid(True, alpha=0.3)
-                st.pyplot(fig1)
-            
-            with col2:
-                # 字节值热力图
-                if len(bytes_data) > 1:
-                    fig2, ax2 = plt.subplots(figsize=(8, 4))
-                    im = ax2.imshow([bytes_data], cmap='viridis', aspect='auto')
-                    ax2.set_xlabel('字节位置')
-                    ax2.set_title('字节值热力图')
-                    plt.colorbar(im, ax=ax2)
-                    st.pyplot(fig2)
-            
             # 二进制位可视化
             st.subheader("二进制位视图")
             binary_matrix = []
             for byte in bytes_data:
                 binary_matrix.append([int(bit) for bit in format(byte, '08b')])
             
-            if binary_matrix:
-                fig3, ax3 = plt.subplots(figsize=(10, max(2, len(binary_matrix) * 0.3)))
-                ax3.imshow(binary_matrix, cmap='binary', aspect='auto')
-                ax3.set_xlabel('位位置 (0-7)')
-                ax3.set_ylabel('字节位置')
-                ax3.set_title('二进制位图 (1=设置, 0=清除)')
-                ax3.set_xticks(range(8))
-                ax3.set_xticklabels([f'Bit {i}' for i in range(7, -1, -1)])
-                st.pyplot(fig3)
     
     with tabs[2]:
         st.subheader("详细解析结果")
