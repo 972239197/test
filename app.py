@@ -19,7 +19,6 @@ st.set_page_config(
 
 # 标题和描述
 st.title("🔢 十六进制数据解析器")
-st.write("欢迎来到我的应用！")
 st.markdown("""
 这是一个强大的数组解析工具
 """)
@@ -69,28 +68,32 @@ class HexParser:
         """解析整数类型"""
         try:
             bytes_data = HexParser.hex_to_bytes(hex_data)
-            results = {}
+            # results = {}
             
-            # 8位整数
-            if len(bytes_data) >= 1:
-                results["8位无符号整数"] = struct.unpack('B', bytes_data[:1])[0]
-                results["8位有符号整数"] = struct.unpack('b', bytes_data[:1])[0]
+            # # 8位整数
+            # if len(bytes_data) >= 1:
+            #     results["8位无符号整数"] = struct.unpack('B', bytes_data[:1])[0]
+            #     results["8位有符号整数"] = struct.unpack('b', bytes_data[:1])[0]
             
-            # 16位整数 (小端序和大端序)
-            if len(bytes_data) >= 2:
-                results["16位无符号整数(大端)"] = struct.unpack('>H', bytes_data[:2])[0]
-                results["16位有符号整数(大端)"] = struct.unpack('>h', bytes_data[:2])[0]
-                results["16位无符号整数(小端)"] = struct.unpack('<H', bytes_data[:2])[0]
-                results["16位有符号整数(小端)"] = struct.unpack('<h', bytes_data[:2])[0]
+            # # 16位整数 (小端序和大端序)
+            # if len(bytes_data) >= 2:
+            #     results["16位无符号整数(大端)"] = struct.unpack('>H', bytes_data[:2])[0]
+            #     results["16位有符号整数(大端)"] = struct.unpack('>h', bytes_data[:2])[0]
+            #     results["16位无符号整数(小端)"] = struct.unpack('<H', bytes_data[:2])[0]
+            #     results["16位有符号整数(小端)"] = struct.unpack('<h', bytes_data[:2])[0]
             
-            # 32位整数
-            if len(bytes_data) >= 4:
-                results["32位无符号整数(大端)"] = struct.unpack('>I', bytes_data[:4])[0]
-                results["32位有符号整数(大端)"] = struct.unpack('>i', bytes_data[:4])[0]
-                results["32位无符号整数(小端)"] = struct.unpack('<I', bytes_data[:4])[0]
-                results["32位有符号整数(小端)"] = struct.unpack('<i', bytes_data[:4])[0]
+            # # 32位整数
+            # if len(bytes_data) >= 4:
+            #     results["32位无符号整数(大端)"] = struct.unpack('>I', bytes_data[:4])[0]
+            #     results["32位有符号整数(大端)"] = struct.unpack('>i', bytes_data[:4])[0]
+            #     results["32位无符号整数(小端)"] = struct.unpack('<I', bytes_data[:4])[0]
+            #     results["32位有符号整数(小端)"] = struct.unpack('<i', bytes_data[:4])[0]
             
-            return results
+            # return results
+            st.write(f"**数组:** {selected_dev}")
+            for element in bytes_data:
+                st.write(f"**数组:** {element}")
+                
         except Exception as e:
             return {"错误": f"整数解析失败: {str(e)}"}
     
@@ -216,7 +219,7 @@ if st.session_state.parsed_results:
         if "integers" in latest_result:
             integers = latest_result["integers"]
             if "错误" not in integers:
-                st.write("**整数解析:**")
+                st.write("**十六进制整数解析:**")
                 for key, value in list(integers.items())[:4]:  # 显示前4个
                     st.code(f"{key}: {value}")
     
