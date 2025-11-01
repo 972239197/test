@@ -164,6 +164,13 @@ class HexParser:
                             st.write(f"打包出餐模组状态 : 固件升级中")
                         else:
                             st.write(f"打包出餐模组状态 : 异常")
+                if i==17:
+                    with col2:
+                        st.write(f"冷柜温度 : {nData*256 + bytes_data[i+1]}")
+                if i==19:
+                    with col2:
+                        st.write(f"调料柜温度 : {nData*256 + bytes_data[i+1]}")
+
 
         except Exception as e:
             return {"错误": f"整数解析失败: {str(e)}"}
