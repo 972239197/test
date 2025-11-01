@@ -90,29 +90,80 @@ class HexParser:
             #     results["32位有符号整数(小端)"] = struct.unpack('<i', bytes_data[:4])[0]
             
             # return results
+            col1, col2, col3, col4 = st.columns([1, 1, 1, 1])  # 中间列宽度是两边的2倍
             for i, nData in enumerate(bytes_data):
                 if i==12:
-                    if int(nData) == 0:
-                        st.write(f"整机模式 : 手动")
-                    elif int(nData) == 1:
-                        st.write(f"整机模式 : 自动")
-                    elif int(nData) == 2:
-                        st.write(f"整机模式 : 老化")
+                    with col1:
+                        if int(nData) == 0:
+                            st.write(f"整机模式 : 手动")
+                        elif int(nData) == 1:
+                            st.write(f"整机模式 : 自动")
+                        elif int(nData) == 2:
+                            st.write(f"整机模式 : 老化")
                 if i==13:
-                    if int(nData) == 0:
-                        st.write(f"整机状态 : 未初始化")
-                    elif int(nData) == 1:
-                        st.write(f"整机状态 : 初始化中")
-                    elif int(nData) == 2:
-                        st.write(f"整机状态 : 初始化完成")
-                    elif int(nData) == 3:
-                        st.write(f"整机状态 : 空闲")
-                    elif int(nData) == 4:
-                        st.write(f"整机状态 : 运行中")
-                    elif int(nData) == 5:
-                        st.write(f"整机状态 : 固件升级中")
-                    else:
-                        st.write(f"整机状态 : 异常")
+                    with col2:
+                        if int(nData) == 0:
+                            st.write(f"整机状态 : 未初始化")
+                        elif int(nData) == 1:
+                            st.write(f"整机状态 : 初始化中")
+                        elif int(nData) == 2:
+                            st.write(f"整机状态 : 初始化完成")
+                        elif int(nData) == 3:
+                            st.write(f"整机状态 : 空闲")
+                        elif int(nData) == 4:
+                            st.write(f"整机状态 : 运行中")
+                        elif int(nData) == 5:
+                            st.write(f"整机状态 : 固件升级中")
+                        else:
+                            st.write(f"整机状态 : 异常")
+                if i==14:
+                    with col3:
+                        if int(nData) == 0:
+                            st.write(f"冷柜天车状态 : 未初始化")
+                        elif int(nData) == 1:
+                            st.write(f"冷柜天车状态 : 初始化中")
+                        elif int(nData) == 2:
+                            st.write(f"冷柜天车状态 : 初始化完成")
+                        elif int(nData) == 3:
+                            st.write(f"冷柜天车状态 : 空闲")
+                        elif int(nData) == 4:
+                            st.write(f"冷柜天车状态 : 运行中")
+                        elif int(nData) == 5:
+                            st.write(f"冷柜天车状态 : 固件升级中")
+                        else:
+                            st.write(f"冷柜天车状态 : 异常")
+                if i==15:
+                    with col4:
+                        if int(nData) == 0:
+                            st.write(f"副柜天车状态 : 未初始化")
+                        elif int(nData) == 1:
+                            st.write(f"副柜天车状态 : 初始化中")
+                        elif int(nData) == 2:
+                            st.write(f"副柜天车状态 : 初始化完成")
+                        elif int(nData) == 3:
+                            st.write(f"副柜天车状态 : 空闲")
+                        elif int(nData) == 4:
+                            st.write(f"副柜天车状态 : 运行中")
+                        elif int(nData) == 5:
+                            st.write(f"副柜天车状态 : 固件升级中")
+                        else:
+                            st.write(f"副柜天车状态 : 异常")
+                if i==16:
+                    with col1:
+                        if int(nData) == 0:
+                            st.write(f"打包出餐模组状态 : 未初始化")
+                        elif int(nData) == 1:
+                            st.write(f"打包出餐模组状态 : 初始化中")
+                        elif int(nData) == 2:
+                            st.write(f"打包出餐模组状态 : 初始化完成")
+                        elif int(nData) == 3:
+                            st.write(f"打包出餐模组状态 : 空闲")
+                        elif int(nData) == 4:
+                            st.write(f"打包出餐模组状态 : 运行中")
+                        elif int(nData) == 5:
+                            st.write(f"打包出餐模组状态 : 固件升级中")
+                        else:
+                            st.write(f"打包出餐模组状态 : 异常")
 
         except Exception as e:
             return {"错误": f"整数解析失败: {str(e)}"}
@@ -229,26 +280,26 @@ if st.button("🚀 开始解析", type="primary", use_container_width=True):
         st.warning("⚠️ 请输入十六进制数据")
 
 # 显示解析结果
-if st.session_state.parsed_results:
-    latest_result = st.session_state.parsed_results[-1]
+# if st.session_state.parsed_results:
+#     latest_result = st.session_state.parsed_results[-1]
     
-    st.header("📊 解析结果")
+#     st.header("📊 解析结果")
     
-    cols = st.columns(2)
-    with cols[0]:
-        if "integers" in latest_result:
-            integers = latest_result["integers"]
-            if int not in integers:
-                st.write("**十六进制整数解析:**")
-                for key, value in list(integers.items())[:4]:  # 显示前4个
-                    st.code(f"{key}: {value}")
+#     cols = st.columns(2)
+#     with cols[0]:
+#         if "integers" in latest_result:
+#             integers = latest_result["integers"]
+#             if int not in integers:
+#                 st.write("**十六进制整数解析:**")
+#                 for key, value in list(integers.items())[:4]:  # 显示前4个
+#                     st.code(f"{key}: {value}")
     
-    with cols[1]:
-        if "strings" in latest_result:
-            strings = latest_result["strings"]
-            if "错误" not in strings:
-                st.write("**字符串解析:**")
-                st.code(f"ASCII: {strings.get('ASCII字符串', '')}")
+#     with cols[1]:
+#         if "strings" in latest_result:
+#             strings = latest_result["strings"]
+#             if "错误" not in strings:
+#                 st.write("**字符串解析:**")
+#                 st.code(f"ASCII: {strings.get('ASCII字符串', '')}")
     
 #展现数据
 
