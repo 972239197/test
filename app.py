@@ -171,7 +171,7 @@ class HexParser:
                     with col3:
                         st.write(f"调料柜温度 : {nData*256 + bytes_data[i+1]}")
                 elif i==21:
-                    with col1:
+                    with col4:
                         if int(nData) == 0:
                             st.write(f"微波仓状态 : 空闲")
                         elif int(nData) == 1:
@@ -190,6 +190,8 @@ class HexParser:
                             st.write(f"微波仓状态 : 预留")
                         elif  int(nData) == 10:
                             st.write(f"微波仓状态 : 微波漏波")
+                        else:
+                            st.write(f"微波仓状态 : 预留")
 
 
         except Exception as e:
