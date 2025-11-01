@@ -238,7 +238,7 @@ if st.session_state.parsed_results:
     with cols[0]:
         if "integers" in latest_result:
             integers = latest_result["integers"]
-            if "错误" not in integers:
+            if int not in integers:
                 st.write("**十六进制整数解析:**")
                 for key, value in list(integers.items())[:4]:  # 显示前4个
                     st.code(f"{key}: {value}")
