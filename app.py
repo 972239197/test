@@ -100,7 +100,7 @@ class HexParser:
                             st.write(f"整机模式 : 自动")
                         elif int(nData) == 2:
                             st.write(f"整机模式 : 老化")
-                if i==13:
+                elif i==13:
                     with col2:
                         if int(nData) == 0:
                             st.write(f"整机状态 : 未初始化")
@@ -116,7 +116,7 @@ class HexParser:
                             st.write(f"整机状态 : 固件升级中")
                         else:
                             st.write(f"整机状态 : 异常")
-                if i==14:
+                elif i==14:
                     with col3:
                         if int(nData) == 0:
                             st.write(f"冷柜天车状态 : 未初始化")
@@ -132,7 +132,7 @@ class HexParser:
                             st.write(f"冷柜天车状态 : 固件升级中")
                         else:
                             st.write(f"冷柜天车状态 : 异常")
-                if i==15:
+                elif i==15:
                     with col4:
                         if int(nData) == 0:
                             st.write(f"副柜天车状态 : 未初始化")
@@ -148,7 +148,7 @@ class HexParser:
                             st.write(f"副柜天车状态 : 固件升级中")
                         else:
                             st.write(f"副柜天车状态 : 异常")
-                if i==16:
+                elif i==16:
                     with col1:
                         if int(nData) == 0:
                             st.write(f"打包出餐模组状态 : 未初始化")
@@ -164,12 +164,32 @@ class HexParser:
                             st.write(f"打包出餐模组状态 : 固件升级中")
                         else:
                             st.write(f"打包出餐模组状态 : 异常")
-                if i==17:
+                elif i==17:
                     with col2:
                         st.write(f"冷柜温度 : {nData*256 + bytes_data[i+1]}")
-                if i==19:
-                    with col2:
+                elif i==19:
+                    with col3:
                         st.write(f"调料柜温度 : {nData*256 + bytes_data[i+1]}")
+                elif i==21:
+                    with col1:
+                        if int(nData) == 0:
+                            st.write(f"微波仓状态 : 空闲")
+                        elif int(nData) == 1:
+                            st.write(f"微波仓状态 : 制作中")
+                        elif int(nData) == 2:
+                            st.write(f"微波仓状态 : 预留")
+                        elif int(nData) == 3:
+                            st.write(f"微波仓状态 : 停止")
+                        elif int(nData) == 4:
+                            st.write(f"微波仓状态 : 预留")
+                        elif int(nData) == 5:
+                            st.write(f"微波仓状态 : 预留")
+                        elif  int(nData) == 6:
+                            st.write(f"微波仓状态 : 异常")
+                        elif  int(nData) == 9:
+                            st.write(f"微波仓状态 : 预留")
+                        elif  int(nData) == 10:
+                            st.write(f"微波仓状态 : 微波漏波")
 
 
         except Exception as e:
