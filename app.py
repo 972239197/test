@@ -94,22 +94,22 @@ class HexParser:
                 if i==12:
                     if int(nData) == 0:
                         st.write(f"整机模式 : 手动")
-                    elif nData == 1:
+                    elif int(nData) == 1:
                         st.write(f"整机模式 : 自动")
-                    elif nData == 2:
+                    elif int(nData) == 2:
                         st.write(f"整机模式 : 老化")
                 if i==13:
-                    if nData == 0:
+                    if int(nData) == 0:
                         st.write(f"整机状态 : 未初始化")
-                    elif nData == 1:
+                    elif int(nData) == 1:
                         st.write(f"整机状态 : 初始化中")
-                    elif nData == 2:
+                    elif int(nData) == 2:
                         st.write(f"整机状态 : 初始化完成")
-                    elif nData == 3:
+                    elif int(nData) == 3:
                         st.write(f"整机状态 : 空闲")
-                    elif nData == 4:
+                    elif int(nData) == 4:
                         st.write(f"整机状态 : 运行中")
-                    elif nData == 5:
+                    elif int(nData) == 5:
                         st.write(f"整机状态 : 固件升级中")
                     else:
                         st.write(f"整机状态 : 异常")
@@ -149,23 +149,23 @@ class HexParser:
         except Exception as e:
             return {"错误": f"字符串解析失败: {str(e)}"}
     
-    @staticmethod
-    def parse_basic_info(hex_data: str) -> Dict[str, Any]:
-        """解析基本信息"""
-        try:
-            bytes_data = HexParser.hex_to_bytes(hex_data)
-            cleaned_hex = HexParser.clean_hex_string(hex_data)
+    # @staticmethod
+    # def parse_basic_info(hex_data: str) -> Dict[str, Any]:
+    #     """解析基本信息"""
+    #     try:
+    #         bytes_data = HexParser.hex_to_bytes(hex_data)
+    #         cleaned_hex = HexParser.clean_hex_string(hex_data)
             
-            return {
-                "原始十六进制": hex_data,
-                "清理后十六进制": cleaned_hex,
-                "字节长度": len(bytes_data),
-                "位长度": len(bytes_data) * 8,
-                "字节数组": list(bytes_data),
-                "二进制表示": ' '.join(format(byte, '08b') for byte in bytes_data)
-            }
-        except Exception as e:
-            return {"错误": f"基本信息解析失败: {str(e)}"}
+    #         return {
+    #             "原始十六进制": hex_data,
+    #             "清理后十六进制": cleaned_hex,
+    #             "字节长度": len(bytes_data),
+    #             "位长度": len(bytes_data) * 8,
+    #             "字节数组": list(bytes_data),
+    #             "二进制表示": ' '.join(format(byte, '08b') for byte in bytes_data)
+    #         }
+    #     except Exception as e:
+    #         return {"错误": f"基本信息解析失败: {str(e)}"}
     
     
 # 侧边栏配置
