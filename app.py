@@ -90,7 +90,7 @@ class HexParser:
             #     results["32位有符号整数(小端)"] = struct.unpack('<i', bytes_data[:4])[0]
             
             # return results
-            for i, nData in enumerate(bytes_data):
+            for i, nData in enumerate(int(bytes_data)):
                 if i==12:
                     if nData == 0:
                         st.write(f"整机模式 : 手动")
