@@ -91,8 +91,28 @@ class HexParser:
             
             # return results
             for i, nData in enumerate(bytes_data):
-                if i == 12:
-                    st.write(f"整机模式:{'手动' if nData == 0 else '老化'}")
+                if i==12:
+                    if nData == 0:
+                        st.write(f"整机模式 : 手动")
+                    elif nData == 1:
+                        st.write(f"整机模式 : 自动")
+                    elif nData == 2:
+                        st.write(f"整机模式 : 老化")
+                if i==13:
+                    if nData == 0:
+                        st.write(f"整机状态 : 未初始化")
+                    elif nData == 1:
+                        st.write(f"整机状态 : 初始化中")
+                    elif nData == 2:
+                        st.write(f"整机状态 : 初始化完成")
+                    elif nData == 3:
+                        st.write(f"整机状态 : 空闲")
+                    elif nData == 4:
+                        st.write(f"整机状态 : 运行中")
+                    elif nData == 5:
+                        st.write(f"整机状态 : 固件升级中")
+                    else:
+                        st.write(f"整机状态 : 异常")
 
         except Exception as e:
             return {"错误": f"整数解析失败: {str(e)}"}
