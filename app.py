@@ -90,10 +90,10 @@ class HexParser:
             #     results["32位有符号整数(小端)"] = struct.unpack('<i', bytes_data[:4])[0]
             
             # return results
-            st.write(f"**数组:** {selected_dev}")
-            for element in bytes_data:
-                st.write(f"**数组:** {element}")
-                
+            for i, nData in bytes_data:
+                if i == 12:
+                    st.write(f"整机模式:{'手动' if nData == 0 else '老化'}")
+
         except Exception as e:
             return {"错误": f"整数解析失败: {str(e)}"}
     
