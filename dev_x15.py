@@ -131,14 +131,6 @@ def parse_array_data(bytes_data) :
         elif i==23: #23~24
             with col2:
                 st.write(f"微波制作剩余时间 : {nData*256 + bytes_data[i+1]}")
-            with col3:
-                st.write(f""
-                         -
-                         "")
-            with col4:
-                st.write(f""
-                         -
-                         "")
         elif i==25: #25~44
             with col1:
                 st.markdown("<span style='color:red'>冷柜异常码--------------------</span>", unsafe_allow_html=True)
@@ -179,7 +171,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==27: #25~44
             with col3:
-                st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
+                st.markdown("\n<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                 msg_value = "🔴中转直线运动模组位置错误" if (nData & 0x01) > 0 else "🟢中转直线运动模组位置错误"
                 st.write(msg_value)
                 msg_value = "🔴中转直线运动模组驱动器报警" if (nData & 0x02) > 0 else "🟢中转直线运动模组驱动器报警"
@@ -198,7 +190,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==28: #25~44
             with col4:
-                st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
+                st.markdown("\n<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                 msg_value = "🔴中转组件来就绪位超时" if (nData & 0x01) > 0 else "🟢中转组件来就绪位超时"
                 st.write(msg_value)
                 msg_value = "🔴中转直线运动模右移超时" if (nData & 0x02) > 0 else "🟢中转直线运动模右移超时"
