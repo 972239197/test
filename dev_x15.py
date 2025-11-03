@@ -3,7 +3,8 @@ import ctypes
 
 def parse_array_data(bytes_data) :
     # return results
-    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])  # 中间列宽度是两边的2倍
+    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])  #等宽列
+    err1, err2, err3, err4 = st.columns([1, 1, 1, 1])
     for i, nData in enumerate(bytes_data):
         if i==12:
             with col1:
@@ -132,7 +133,7 @@ def parse_array_data(bytes_data) :
             with col2:
                 st.write(f"微波制作剩余时间 : {nData*256 + bytes_data[i+1]}")
         elif i==25: #25~44
-            with col1:
+            with err1:
                 st.markdown("<span style='color:red'>冷柜异常码--------------------</span>", unsafe_allow_html=True)
                 msg_value = "🔴读取冷柜数据异常" if (nData & 0x01) > 0 else "🟢读取冷柜数据异常"
                 st.write(msg_value)
@@ -151,7 +152,7 @@ def parse_array_data(bytes_data) :
                 msg_value = "🔴冷柜天车Y轴驱动器报警" if (nData & 0x80) > 0 else "🟢冷柜天车Y轴驱动器报警"
                 st.write(msg_value)
         elif i==26: #25~44
-            with col2:
+            with err2:
                 st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                 msg_value = "🔴冷柜天车侧推电机推出异常" if (nData & 0x01) > 0 else "🟢冷柜天车侧推电机推出异常"
                 st.write(msg_value)
@@ -170,7 +171,7 @@ def parse_array_data(bytes_data) :
                 msg_value = "🔴中转直线运动模组回原点错误" if (nData & 0x80) > 0 else "🟢中转直线运动模组回原点错误"
                 st.write(msg_value)
         elif i==27: #25~44
-            with col3:
+            with err3:
                 st.markdown("\n<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                 msg_value = "🔴中转直线运动模组位置错误" if (nData & 0x01) > 0 else "🟢中转直线运动模组位置错误"
                 st.write(msg_value)
@@ -189,7 +190,7 @@ def parse_array_data(bytes_data) :
                 msg_value = "🔴副柜天车叉子后限位不触发超时" if (nData & 0x80) > 0 else "🟢副柜天车叉子后限位不触发超时"
                 st.write(msg_value)
         elif i==28: #25~44
-            with col4:
+            with err4:
                 st.markdown("\n<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                 msg_value = "🔴中转组件来就绪位超时" if (nData & 0x01) > 0 else "🟢中转组件来就绪位超时"
                 st.write(msg_value)
@@ -208,7 +209,7 @@ def parse_array_data(bytes_data) :
                 msg_value = "🔴冷柜天车超时异常" if (nData & 0x80) > 0 else "🟢冷柜天车超时异常"
                 st.write(msg_value)
         elif i==31: #25~44
-            with col1:
+            with err1:
                 st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                 msg_value = "🔴调料柜门开门超时" if (nData & 0x01) > 0 else "🟢调料柜门开门超时"
                 st.write(msg_value)
@@ -227,7 +228,7 @@ def parse_array_data(bytes_data) :
                 msg_value = "🔴预留" if (nData & 0x80) > 0 else "🟢预留"
                 st.write(msg_value)
         elif i==32: #25~44
-            with col2:
+            with err2:
                 st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                 msg_value = "🔴弹簧货道1超时" if (nData & 0x01) > 0 else "🟢弹簧货道1超时"
                 st.write(msg_value)
