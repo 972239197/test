@@ -364,21 +364,21 @@ def parse_array_data(bytes_data) :
         elif i==43: #25~44
             with err1:
                 st.markdown("<span style='color:red'>----------打包模组异常码----------</span>", unsafe_allow_html=True)
-                msg_value = "🔴打包上下移电机传感器异常" if (nData & 0x01) > 0 else "🟢打包上下移电机传感器异常"
+                msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "打包上下移电机传感器异常"
                 st.write(msg_value)
-                msg_value = "🔴出餐电机传感器异常" if (nData & 0x02) > 0 else "🟢出餐电机传感器异常"
+                msg_value = ("🔴" if (nData & 0x02) > 0 else "🟢") + "出餐电机传感器异常"
                 st.write(msg_value)
-                msg_value = "🔴中间出餐具取空" if (nData & 0x04) > 0 else "🟢中间出餐具取空"
+                msg_value = ("🔴" if (nData & 0x04) > 0 else "🟢") + "中间出餐具取空"
                 st.write(msg_value)
-                msg_value = "🔴吸盘电机升降传感器异常" if (nData & 0x08) > 0 else "🟢吸盘电机升降传感器异常"
+                msg_value = ("🔴" if (nData & 0x08) > 0 else "🟢") + "吸盘电机升降传感器异常"
                 st.write(msg_value)
-                msg_value = "🔴吸盘电机前后传感器异常" if (nData & 0x10) > 0 else "🟢吸盘电机前后传感器异常"
+                msg_value = ("🔴" if (nData & 0x10) > 0 else "🟢") + "吸盘电机前后传感器异常"
                 st.write(msg_value)
-                msg_value = "🔴托盘电机传感器异常" if (nData & 0x20) > 0 else "🟢托盘电机传感器异常"
+                msg_value = ("🔴" if (nData & 0x20) > 0 else "🟢") + "托盘电机传感器异常"
                 st.write(msg_value)
-                msg_value = "🔴夹手电机传感器异常" if (nData & 0x40) > 0 else "🟢夹手电机传感器异常"
+                msg_value = ("🔴" if (nData & 0x40) > 0 else "🟢") + "夹手电机传感器异常"
                 st.write(msg_value)
-                msg_value = "🔴纸盒推杆电机传感器异常" if (nData & 0x80) > 0 else "🟢纸盒推杆电机传感器异常"
+                msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "纸盒推杆电机传感器异常"
                 st.write(msg_value)
         elif i==44: #25~44
             with err2:
