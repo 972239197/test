@@ -610,7 +610,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==56: #45~57 bit signal
             with sig4:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------信号传感器----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "中转直线运动模组驱动器报警"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "夹盒升降电机驱动器报警"
