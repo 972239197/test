@@ -13,7 +13,7 @@ def parse_array_data(bytes_data) :
                 elif int(nData) == 1:
                     msg_value = "🟢自动"
                 else:
-                    msg_value = "💚老化❤️"
+                    msg_value = "🔵老化"
                 st.write("整机模式 : " + msg_value)
         elif i==13:
             with col2:
@@ -134,7 +134,7 @@ def parse_array_data(bytes_data) :
                 st.write(f"微波制作剩余时间 : {nData*256 + bytes_data[i+1]}")
         elif i==25: #25~44
             with err1:
-                st.markdown("<span style='color:red'>冷柜异常码--------------------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = "🔴读取冷柜数据异常" if (nData & 0x01) > 0 else "🟢读取冷柜数据异常"
                 st.write(msg_value)
                 msg_value = "🔴保存冷柜数据异常" if (nData & 0x02) > 0 else "🟢保存冷柜数据异常"
@@ -153,7 +153,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==26: #25~44
             with err2:
-                st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = "🔴冷柜天车侧推电机推出异常" if (nData & 0x01) > 0 else "🟢冷柜天车侧推电机推出异常"
                 st.write(msg_value)
                 msg_value = "🔴冷柜天车侧推电机缩回异常" if (nData & 0x02) > 0 else "🟢冷柜天车侧推电机缩回异常"
@@ -172,7 +172,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==27: #25~44
             with err3:
-                st.markdown("\n<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
+                st.markdown("\n<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = "🔴中转直线运动模组位置错误" if (nData & 0x01) > 0 else "🟢中转直线运动模组位置错误"
                 st.write(msg_value)
                 msg_value = "🔴中转直线运动模组驱动器报警" if (nData & 0x02) > 0 else "🟢中转直线运动模组驱动器报警"
@@ -191,7 +191,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==28: #25~44
             with err4:
-                st.markdown("\n<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
+                st.markdown("\n<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = "🔴中转组件来就绪位超时" if (nData & 0x01) > 0 else "🟢中转组件来就绪位超时"
                 st.write(msg_value)
                 msg_value = "🔴中转直线运动模右移超时" if (nData & 0x02) > 0 else "🟢中转直线运动模右移超时"
@@ -210,7 +210,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==31: #25~44
             with err1:
-                st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = "🔴调料柜门开门超时" if (nData & 0x01) > 0 else "🟢调料柜门开门超时"
                 st.write(msg_value)
                 msg_value = "🔴调料柜门关门超时" if (nData & 0x02) > 0 else "🟢调料柜门关门超时"
@@ -229,7 +229,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==32: #25~44
             with err2:
-                st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = "🔴弹簧货道1超时" if (nData & 0x01) > 0 else "🟢弹簧货道1超时"
                 st.write(msg_value)
                 msg_value = "🔴弹簧货道2超时" if (nData & 0x02) > 0 else "🟢弹簧货道2超时"
@@ -245,6 +245,82 @@ def parse_array_data(bytes_data) :
                 msg_value = "🔴弹簧货道7超时" if (nData & 0x40) > 0 else "🟢弹簧货道7超时"
                 st.write(msg_value)
                 msg_value = "🔴弹簧货道8超时" if (nData & 0x80) > 0 else "🟢弹簧货道8超时"
+                st.write(msg_value)
+        elif i==33: #25~44
+            with err3:
+                st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
+                msg_value = "🔴副柜天车叉子电机伸出超时" if (nData & 0x01) > 0 else "🟢副柜天车叉子电机伸出超时"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车叉子电机缩回超时" if (nData & 0x02) > 0 else "🟢副柜天车叉子电机缩回超时"
+                st.write(msg_value)
+                msg_value = "🔴副柜X轴电机左移超时" if (nData & 0x04) > 0 else "🟢副柜X轴电机左移超时"
+                st.write(msg_value)
+                msg_value = "🔴副柜X轴电机右移超时" if (nData & 0x08) > 0 else "🟢副柜X轴电机右移超时"
+                st.write(msg_value)
+                msg_value = "🔴副柜Y轴电机下降超时" if (nData & 0x10) > 0 else "🟢副柜Y轴电机下降超时"
+                st.write(msg_value)
+                msg_value = "🔴副柜Y轴电机上升超时" if (nData & 0x20) > 0 else "🟢副柜Y轴电机上升超时"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车夹盒电机张开超时" if (nData & 0x40) > 0 else "🟢副柜天车夹盒电机张开超时"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车夹盒电机闭合超时" if (nData & 0x80) > 0 else "🟢副柜天车夹盒电机闭合超时"
+                st.write(msg_value)
+        elif i==34: #25~44
+            with err4:
+                st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
+                msg_value = "🔴微波门打开超时" if (nData & 0x01) > 0 else "🟢微波门打开超时"
+                st.write(msg_value)
+                msg_value = "🔴微波门关闭超时" if (nData & 0x02) > 0 else "🟢微波门关闭超时"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车叉子电机传感器异常" if (nData & 0x04) > 0 else "🟢副柜天车叉子电机传感器异常"
+                st.write(msg_value)
+                msg_value = "🔴副柜X轴电机传感器异常" if (nData & 0x08) > 0 else "🟢副柜X轴电机传感器异常"
+                st.write(msg_value)
+                msg_value = "🔴副柜Y轴电机传感器异常" if (nData & 0x10) > 0 else "🟢副柜Y轴电机传感器异常"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车夹盒电机传感器异常" if (nData & 0x20) > 0 else "🟢副柜天车夹盒电机传感器异常"
+                st.write(msg_value)
+                msg_value = "🔴微波门传感器异常" if (nData & 0x40) > 0 else "🟢微波门传感器异常"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车叉子电机位置异常" if (nData & 0x80) > 0 else "🟢副柜天车叉子电机位置异常"
+                st.write(msg_value)
+        elif i==35: #25~44
+            with err4:
+                st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
+                msg_value = "🔴副柜X轴电机位置异常" if (nData & 0x01) > 0 else "🟢副柜X轴电机位置异常"
+                st.write(msg_value)
+                msg_value = "🔴副柜Y轴电机位置异常" if (nData & 0x02) > 0 else "🟢副柜Y轴电机位置异常"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车取餐盒失败" if (nData & 0x04) > 0 else "🟢副柜天车取餐盒失败"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车放餐盒失败" if (nData & 0x08) > 0 else "🟢副柜天车放餐盒失败"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车叉子取餐盒为空" if (nData & 0x10) > 0 else "🟢副柜天车叉子取餐盒为空"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车叉子放餐盒滞留" if (nData & 0x20) > 0 else "🟢副柜天车叉子放餐盒滞留"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车叉子变形" if (nData & 0x40) > 0 else "🟢副柜天车叉子变形"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车去目标失败" if (nData & 0x80) > 0 else "🟢副柜天车去目标失败"
+                st.write(msg_value)
+        elif i==36: #25~44
+            with err4:
+                st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
+                msg_value = "🔴副柜写内存异常" if (nData & 0x01) > 0 else "🟢副柜写内存异常"
+                st.write(msg_value)
+                msg_value = "🔴副柜读内存异常" if (nData & 0x02) > 0 else "🟢副柜读内存异常"
+                st.write(msg_value)
+                msg_value = "🔴副柜天车复位失败" if (nData & 0x04) > 0 else "🟢副柜天车复位失败"
+                st.write(msg_value)
+                msg_value = "🔴副柜X轴电机故障" if (nData & 0x08) > 0 else "🟢副柜X轴电机故障"
+                st.write(msg_value)
+                msg_value = "🔴副柜Y轴电机故障" if (nData & 0x10) > 0 else "🟢副柜Y轴电机故障"
+                st.write(msg_value)
+                msg_value = "🔴叉子电机故障" if (nData & 0x20) > 0 else "🟢叉子电机故障"
+                st.write(msg_value)
+                msg_value = "🔴预留" if (nData & 0x40) > 0 else "🟢预留"
+                st.write(msg_value)
+                msg_value = "🔴预留" if (nData & 0x80) > 0 else "🟢预留"
                 st.write(msg_value)
 
     return {"finish"}
