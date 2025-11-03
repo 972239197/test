@@ -121,51 +121,54 @@ class HexParser:
                 elif i==14:
                     with col3:
                         if int(nData) == 0:
-                            st.write(f"冷柜天车状态 : 未初始化")
+                            msg_value = "未初始化"
                         elif int(nData) == 1:
-                            st.write(f"冷柜天车状态 : 初始化中")
+                            msg_value = "初始化中"
                         elif int(nData) == 2:
-                            st.write(f"冷柜天车状态 : 初始化完成")
+                            msg_value = "初始化完成"
                         elif int(nData) == 3:
-                            st.write(f"冷柜天车状态 : 空闲")
+                            msg_value = "空闲"
                         elif int(nData) == 4:
-                            st.write(f"冷柜天车状态 : 运行中")
+                            msg_value = "运行中"
                         elif int(nData) == 5:
-                            st.write(f"冷柜天车状态 : 固件升级中")
+                            msg_value = "固件升级中"
                         else:
-                            st.write(f"冷柜天车状态 : 异常")
+                            msg_value = "异常"
+                        st.write("冷柜天车状态 : " + msg_value)
                 elif i==15:
                     with col4:
                         if int(nData) == 0:
-                            st.write(f"副柜天车状态 : 未初始化")
+                            msg_value = "未初始化"
                         elif int(nData) == 1:
-                            st.write(f"副柜天车状态 : 初始化中")
+                            msg_value = "初始化中"
                         elif int(nData) == 2:
-                            st.write(f"副柜天车状态 : 初始化完成")
+                            msg_value = "初始化完成"
                         elif int(nData) == 3:
-                            st.write(f"副柜天车状态 : 空闲")
+                            msg_value = "空闲"
                         elif int(nData) == 4:
-                            st.write(f"副柜天车状态 : 运行中")
+                            msg_value = "运行中"
                         elif int(nData) == 5:
-                            st.write(f"副柜天车状态 : 固件升级中")
+                            msg_value = "固件升级中"
                         else:
-                            st.write(f"副柜天车状态 : 异常")
+                            msg_value = "异常"
+                        st.write("副柜天车状态 : " + msg_value)
                 elif i==16:
                     with col1:
                         if int(nData) == 0:
-                            st.write(f"打包出餐模组状态 : 未初始化")
+                            msg_value = "未初始化"
                         elif int(nData) == 1:
-                            st.write(f"打包出餐模组状态 : 初始化中")
+                            msg_value = "初始化中"
                         elif int(nData) == 2:
-                            st.write(f"打包出餐模组状态 : 初始化完成")
+                            msg_value = "初始化完成"
                         elif int(nData) == 3:
-                            st.write(f"打包出餐模组状态 : 空闲")
+                            msg_value = "空闲"
                         elif int(nData) == 4:
-                            st.write(f"打包出餐模组状态 : 运行中")
+                            msg_value = "运行中"
                         elif int(nData) == 5:
-                            st.write(f"打包出餐模组状态 : 固件升级中")
+                            msg_value = "固件升级中"
                         else:
-                            st.write(f"打包出餐模组状态 : 异常")
+                            msg_value = "异常"
+                        st.write("打包出餐模组状态 : " + msg_value)
                 elif i==17:
                     with col2:
                         st.write(f"冷柜温度 : {nData*256 + bytes_data[i+1]}")
@@ -175,25 +178,43 @@ class HexParser:
                 elif i==21:
                     with col4:
                         if int(nData) == 0:
-                            st.write(f"微波仓状态 : 空闲")
+                            msg_value = "空闲"
                         elif int(nData) == 1:
-                            st.write(f"微波仓状态 : 制作中")
+                            msg_value = "制作中"
                         elif int(nData) == 2:
-                            st.write(f"微波仓状态 : 预留")
+                            msg_value = "预留"
                         elif int(nData) == 3:
-                            st.write(f"微波仓状态 : 停止")
+                            msg_value = "停止"
                         elif int(nData) == 4:
-                            st.write(f"微波仓状态 : 预留")
+                            msg_value = "预留"
                         elif int(nData) == 5:
-                            st.write(f"微波仓状态 : 预留")
+                            msg_value = "预留"
                         elif  int(nData) == 6:
-                            st.write(f"微波仓状态 : 异常")
+                            msg_value = "异常"
                         elif  int(nData) == 9:
-                            st.write(f"微波仓状态 : 预留")
+                            msg_value = "预留"
                         elif  int(nData) == 10:
-                            st.write(f"微波仓状态 : 微波漏波")
+                            msg_value = "微波漏波"
                         else:
-                            st.write(f"微波仓状态 : 预留")
+                            msg_value = "预留"
+                        st.write("微波仓状态 : " + msg_value)
+                elif i==22:
+                    with col4:
+                        if int(nData) == 0:
+                            msg_value = "已关闭"
+                        elif int(nData) == 1:
+                            msg_value = "关闭中"
+                        elif int(nData) == 2:
+                            msg_value = "开启中"
+                        elif int(nData) == 3:
+                            msg_value = "已开启"
+                        elif int(nData) == 4:
+                            msg_value = "关门失败"
+                        elif int(nData) == 5:
+                            msg_value = "开门失败"
+                        else:
+                            msg_value = "停止"
+                        st.write("微波门状态 : " + msg_value)
 
 
         except Exception as e:
