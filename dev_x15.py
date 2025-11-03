@@ -1,4 +1,5 @@
 import streamlit as st
+import ctypes
 
 def parse_array_data(bytes_data) :
     # return results
@@ -83,10 +84,10 @@ def parse_array_data(bytes_data) :
                 st.write("打包出餐模组状态 : " + msg_value)
         elif i==17:
             with col2:
-                st.write(f"冷柜温度 : {nData*256 + bytes_data[i+1]}")
+                st.write(f"冷柜温度 : {ctypes.c_int16(nData*256 + bytes_data[i+1]).value}")
         elif i==19:
             with col3:
-                st.write(f"调料柜温度 : {nData*256 + bytes_data[i+1]}")
+                st.write(f"调料柜温度 : {ctypes.c_int16(nData*256 + bytes_data[i+1]).value}")
         elif i==21:
             with col4:
                 if int(nData) == 0:
