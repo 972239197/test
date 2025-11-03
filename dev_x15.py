@@ -535,21 +535,21 @@ def parse_array_data(bytes_data) :
         elif i==52: #45~57 bit signal
             with sig4:
                 st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
-                msg_value = "⚫"+"副柜天车X轴左限位(原点)" if (nData & 0x01) > 0 else "🟢"+"副柜天车X轴左限位(原点)"
+                msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "副柜天车X轴左限位(原点)"
                 st.write(msg_value)
-                msg_value = "⚫"+"副柜天车X轴右限位" if (nData & 0x02) > 0 else "🟢"+"副柜天车X轴右限位"
+                msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "副柜天车X轴右限位"
                 st.write(msg_value)
-                msg_value = "⚫"+"打包接餐小托盘后限" if (nData & 0x04) > 0 else "🟢"+"打包接餐小托盘后限"
+                msg_value = ("⚫" if (nData & 0x04) > 0 else "🟢") + "打包接餐小托盘后限"
                 st.write(msg_value)
-                msg_value = "⚫"+"打包接餐小托盘前限" if (nData & 0x08) > 0 else "🟢"+"打包接餐小托盘前限"
+                msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "打包接餐小托盘前限"
                 st.write(msg_value)
-                msg_value = "⚫"+"预留" if (nData & 0x10) > 0 else "🟢"+"预留"
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-                msg_value = "⚫"+"预留" if (nData & 0x20) > 0 else "🟢"+"预留"
+                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-                msg_value = "⚫"+"预留" if (nData & 0x40) > 0 else "🟢"+"预留"
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-                msg_value = "⚫"+"预留" if (nData & 0x80) > 0 else "🟢"+"预留"
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
         elif i==53: #45~57 bit signal
             with sig1:
@@ -558,17 +558,74 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "真空取盒前后移后限信号"
                 st.write(msg_value)
-                msg_value = "⚫"+"打包接餐小托盘后限" if (nData & 0x04) > 0 else "🟢"+"打包接餐小托盘后限"
+                msg_value = ("⚫" if (nData & 0x04) > 0 else "🟢") + "真空取盒上下移上限信号"
                 st.write(msg_value)
-                msg_value = "⚫"+"打包接餐小托盘前限" if (nData & 0x08) > 0 else "🟢"+"打包接餐小托盘前限"
+                msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "真空取盒上下移下限信号"
                 st.write(msg_value)
-                msg_value = "⚫"+"预留" if (nData & 0x10) > 0 else "🟢"+"预留"
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "真空取袋纸盒检测光眼信号"
                 st.write(msg_value)
-                msg_value = "⚫"+"预留" if (nData & 0x20) > 0 else "🟢"+"预留"
+                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "夹手上限开信号"
                 st.write(msg_value)
-                msg_value = "⚫"+"预留" if (nData & 0x40) > 0 else "🟢"+"预留"
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "夹手餐盒检测信号"
                 st.write(msg_value)
-                msg_value = "⚫"+"预留" if (nData & 0x80) > 0 else "🟢"+"预留"
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "夹手下限关信号"
+                st.write(msg_value)
+        elif i==54: #45~57 bit signal
+            with sig2:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "夹手上下移电机上限信号"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "夹手上下移电机下限信号"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x04) > 0 else "🟢") + "纸盒仓前进按钮"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "纸盒仓后退按钮"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "副柜门控开关"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "预留"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "调料柜货道信号"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "副柜中餐具电机位置信号"
+                st.write(msg_value)
+        elif i==55: #45~57 bit signal
+            with sig3:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "副柜左餐具电机位置信号"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "副柜右餐具电机位置信号"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x04) > 0 else "🟢") + "微波门上限"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "微波门下限"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "冷柜Y轴驱动器报警"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "冷柜X轴驱动器报警"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "副柜X轴驱动器报警"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "副柜天车Y轴驱动器报警"
+                st.write(msg_value)
+        elif i==56: #45~57 bit signal
+            with sig4:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "中转直线运动模组驱动器报警"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "夹盒升降电机驱动器报警"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x04) > 0 else "🟢") + "中转模组旋转步进报警"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "副柜天车叉子步进报警"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "纸盒仓IO步进报警"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "冷柜门控开关"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "预留"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
 
     return {"finish"}
