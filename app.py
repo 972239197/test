@@ -220,7 +220,23 @@ class HexParser:
                         st.write(f"微波制作剩余时间 : {nData*256 + bytes_data[i+1]}")
                 elif i==25: #25~44
                     with col1:
-                        st.markdown("<span style='color:red'>异常码</span>", unsafe_allow_html=True)
+                        st.markdown("<span style='color:red'>冷柜异常码</span>", unsafe_allow_html=True)
+                        msg_value = "🔴读取冷柜数据异常" if (nData & 0x01) == 1 else "🟢读取冷柜数据异常"
+                        st.write(msg_value)
+                        msg_value = "🔴保存冷柜数据异常" if (nData & 0x02) == 1 else "🟢保存冷柜数据异常"
+                        st.write(msg_value)
+                        msg_value = "🔴冷柜天车X轴回原异常" if (nData & 0x04) == 1 else "🟢冷柜天车X轴回原异常"
+                        st.write(msg_value)
+                        msg_value = "🔴冷柜天车X轴位置异常" if (nData & 0x08) == 1 else "🟢冷柜天车X轴位置异常"
+                        st.write(msg_value)
+                        msg_value = "🔴冷柜天车X轴驱动器报警" if (nData & 0x10) == 1 else "🟢冷柜天车X轴驱动器报警"
+                        st.write(msg_value)
+                        msg_value = "🔴冷柜天车Y轴回原异常" if (nData & 0x20) == 1 else "🟢冷柜天车Y轴回原异常"
+                        st.write(msg_value)
+                        msg_value = "🔴冷柜天车Y轴位置异常" if (nData & 0x40) == 1 else "🟢冷柜天车Y轴位置异常"
+                        st.write(msg_value)
+                        msg_value = "🔴冷柜天车Y轴驱动器报警" if (nData & 0x80) == 1 else "🟢冷柜天车Y轴驱动器报警"
+                        st.write(msg_value)
 
 
         except Exception as e:
