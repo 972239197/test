@@ -258,6 +258,7 @@ class HexParser:
                         st.write(msg_value)
                 elif i==27: #25~44
                     with col3:
+                        st.write("******")
                         st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                         msg_value = "🔴中转直线运动模组位置错误" if (nData & 0x01) > 0 else "🟢中转直线运动模组位置错误"
                         st.write(msg_value)
@@ -277,6 +278,7 @@ class HexParser:
                         st.write(msg_value)
                 elif i==28: #25~44
                     with col4:
+                        st.write("******")
                         st.markdown("<span style='color:red'>------------------------------</span>", unsafe_allow_html=True)
                         msg_value = "🔴中转组件来就绪位超时" if (nData & 0x01) > 0 else "🟢中转组件来就绪位超时"
                         st.write(msg_value)
