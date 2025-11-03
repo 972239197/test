@@ -94,14 +94,13 @@ class HexParser:
             for i, nData in enumerate(bytes_data):
                 if i==12:
                     with col1:
-                        msg_key = "整机模式 : "
                         if int(nData) == 0:
                             msg_sta = "手动"
                         elif int(nData) == 1:
                             msg_sta = "自动"
                         else:
                             msg_sta = "老化"
-                        st.write(msg_key + msg_sta)
+                        st.write("整机模式 : " + msg_sta)
                 elif i==13:
                     with col2:
                         if int(nData) == 0:
@@ -276,7 +275,7 @@ example_map = {
 
 # 数据输入区域
 col1 = st.columns(1)
-with col1[0]:
+with col1:
         default_hex = example_map.get(example_data, "")
         hex_input = st.text_area(
             "请在输入框中输入十六进制数据",
