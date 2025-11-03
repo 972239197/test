@@ -18,9 +18,9 @@ st.set_page_config(
 
 # 标题和描述
 st.title("🔢 十六进制数据解析器")
-st.markdown("""
-这是一个强大的数组解析工具
-""")
+# st.markdown("""
+# 这是一个强大的数组解析工具
+# """)
 
 # 1. 基础多选下拉菜单
 st.header("请选择设备类型")
