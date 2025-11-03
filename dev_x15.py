@@ -494,5 +494,81 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = "⚫"+"2号暂存位检测" if (nData & 0x80) > 0 else "🟢"+"2号暂存位检测"
                 st.write(msg_value)
+        elif i==50: #45~57 bit signal
+            with sig2:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = "⚫"+"3号暂存位检测" if (nData & 0x01) > 0 else "🟢"+"3号暂存位检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"4号暂存位检测" if (nData & 0x02) > 0 else "🟢"+"4号暂存位检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"5号暂存位检测" if (nData & 0x04) > 0 else "🟢"+"5号暂存位检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"6号暂存位检测" if (nData & 0x08) > 0 else "🟢"+"6号暂存位检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"7号暂存位检测" if (nData & 0x10) > 0 else "🟢"+"7号暂存位检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"8号暂存位检测" if (nData & 0x20) > 0 else "🟢"+"8号暂存位检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"9号暂存位检测" if (nData & 0x40) > 0 else "🟢"+"9号暂存位检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"10号暂存位检测" if (nData & 0x80) > 0 else "🟢"+"10号暂存位检测"
+                st.write(msg_value)
+        elif i==51: #45~57 bit signal
+            with sig3:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = "⚫"+"副柜天车Y轴上限位" if (nData & 0x01) > 0 else "🟢"+"副柜天车Y轴上限位"
+                st.write(msg_value)
+                msg_value = "⚫"+"副柜天车Y轴下限位(原点)" if (nData & 0x02) > 0 else "🟢"+"副柜天车Y轴下限位(原点)"
+                st.write(msg_value)
+                msg_value = "⚫"+"副柜天车叉子前限位" if (nData & 0x04) > 0 else "🟢"+"副柜天车叉子前限位"
+                st.write(msg_value)
+                msg_value = "⚫"+"副柜天车叉子后限位(原点)" if (nData & 0x08) > 0 else "🟢"+"副柜天车叉子后限位(原点)"
+                st.write(msg_value)
+                msg_value = "⚫"+"副柜天车夹盒电机张开限位(原点)" if (nData & 0x10) > 0 else "🟢"+"副柜天车夹盒电机张开限位(原点)"
+                st.write(msg_value)
+                msg_value = "⚫"+"副柜天车夹盒电机夹紧限位" if (nData & 0x20) > 0 else "🟢"+"副柜天车夹盒电机夹紧限位"
+                st.write(msg_value)
+                msg_value = "⚫"+"副柜天车餐盒检测" if (nData & 0x40) > 0 else "🟢"+"副柜天车餐盒检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"叉子餐盒变形检测" if (nData & 0x80) > 0 else "🟢"+"叉子餐盒变形检测"
+                st.write(msg_value)
+        elif i==52: #45~57 bit signal
+            with sig4:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = "⚫"+"副柜天车X轴左限位(原点)" if (nData & 0x01) > 0 else "🟢"+"副柜天车X轴左限位(原点)"
+                st.write(msg_value)
+                msg_value = "⚫"+"副柜天车X轴右限位" if (nData & 0x02) > 0 else "🟢"+"副柜天车X轴右限位"
+                st.write(msg_value)
+                msg_value = "⚫"+"打包接餐小托盘后限" if (nData & 0x04) > 0 else "🟢"+"打包接餐小托盘后限"
+                st.write(msg_value)
+                msg_value = "⚫"+"打包接餐小托盘前限" if (nData & 0x08) > 0 else "🟢"+"打包接餐小托盘前限"
+                st.write(msg_value)
+                msg_value = "⚫"+"预留" if (nData & 0x10) > 0 else "🟢"+"预留"
+                st.write(msg_value)
+                msg_value = "⚫"+"预留" if (nData & 0x20) > 0 else "🟢"+"预留"
+                st.write(msg_value)
+                msg_value = "⚫"+"预留" if (nData & 0x40) > 0 else "🟢"+"预留"
+                st.write(msg_value)
+                msg_value = "⚫"+"预留" if (nData & 0x80) > 0 else "🟢"+"预留"
+                st.write(msg_value)
+        elif i==53: #45~57 bit signal
+            with sig1:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = {"⚫" if (nData & 0x01) > 0 else "🟢"} + "真空取盒前后移前限信号"
+                st.write(msg_value)
+                msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "真空取盒前后移后限信号"
+                st.write(msg_value)
+                msg_value = "⚫"+"打包接餐小托盘后限" if (nData & 0x04) > 0 else "🟢"+"打包接餐小托盘后限"
+                st.write(msg_value)
+                msg_value = "⚫"+"打包接餐小托盘前限" if (nData & 0x08) > 0 else "🟢"+"打包接餐小托盘前限"
+                st.write(msg_value)
+                msg_value = "⚫"+"预留" if (nData & 0x10) > 0 else "🟢"+"预留"
+                st.write(msg_value)
+                msg_value = "⚫"+"预留" if (nData & 0x20) > 0 else "🟢"+"预留"
+                st.write(msg_value)
+                msg_value = "⚫"+"预留" if (nData & 0x40) > 0 else "🟢"+"预留"
+                st.write(msg_value)
+                msg_value = "⚫"+"预留" if (nData & 0x80) > 0 else "🟢"+"预留"
+                st.write(msg_value)
 
     return {"finish"}
