@@ -528,9 +528,9 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = "⚫"+"副柜天车夹盒电机夹紧限位" if (nData & 0x20) > 0 else "🟢"+"副柜天车夹盒电机夹紧限位"
                 st.write(msg_value)
-                msg_value = "⚫"+"副柜天车餐盒检测" if (nData & 0x40) > 0 else "🟢"+"副柜天车餐盒检测"
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "副柜天车餐盒检测"
                 st.write(msg_value)
-                msg_value = "⚫"+"叉子餐盒变形检测" if (nData & 0x80) > 0 else "🟢"+"叉子餐盒变形检测"
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "叉子餐盒变形检测"
                 st.write(msg_value)
         elif i==52: #45~57 bit signal
             with sig4:
