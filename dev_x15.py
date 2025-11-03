@@ -554,7 +554,7 @@ def parse_array_data(bytes_data) :
         elif i==53: #45~57 bit signal
             with sig1:
                 st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
-                msg_value = {"⚫" if (nData & 0x01) > 0 else "🟢"} + "真空取盒前后移前限信号"
+                msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "真空取盒前后移前限信号"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "真空取盒前后移后限信号"
                 st.write(msg_value)
