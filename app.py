@@ -95,11 +95,11 @@ class HexParser:
                 if i==12:
                     with col1:
                         if int(nData) == 0:
-                            msg_value = "手动"
+                            msg_value = "🔴手动"
                         elif int(nData) == 1:
-                            msg_value = "自动"
+                            msg_value = "🟢自动"
                         else:
-                            msg_value = "老化"
+                            msg_value = "💚老化❤️"
                         st.write("整机模式 : " + msg_value)
                 elif i==13:
                     with col2:
@@ -199,7 +199,7 @@ class HexParser:
                             msg_value = "预留"
                         st.write("微波仓状态 : " + msg_value)
                 elif i==22:
-                    with col4:
+                    with col1:
                         if int(nData) == 0:
                             msg_value = "已关闭"
                         elif int(nData) == 1:
