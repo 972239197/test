@@ -274,7 +274,7 @@ example_map = {
 }
 
 # 数据输入区域
-col1 = st.columns(1)
+col1 = st.columns()
 with col1:
         default_hex = example_map.get(example_data, "")
         hex_input = st.text_area(
