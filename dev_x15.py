@@ -401,7 +401,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==45: #45~57 bit signal
             with sig1:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "调料柜门上限位"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "调料柜门下限位"
@@ -420,7 +420,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==46: #45~57 bit signal
             with sig2:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "冷柜天车餐盒到位传感器(外)"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "预留"
@@ -439,7 +439,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==47: #45~57 bit signal
             with sig3:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "电动纸盒仓前限"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "电动纸盒仓后限"
@@ -458,7 +458,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==48: #45~57 bit signal
             with sig4:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "出餐平台推出后限"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "缺盒2级预警检测信号"
@@ -477,7 +477,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==49: #45~57 bit signal
             with sig1:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "中转组件前限位"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "中转组件后限位"
@@ -496,7 +496,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==50: #45~57 bit signal
             with sig2:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "3号暂存位检测"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "4号暂存位检测"
@@ -515,7 +515,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==51: #45~57 bit signal
             with sig3:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "副柜天车Y轴上限位"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "副柜天车Y轴下限位(原点)"
@@ -534,7 +534,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==52: #45~57 bit signal
             with sig4:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "副柜天车X轴左限位(原点)"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "副柜天车X轴右限位"
@@ -553,7 +553,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==53: #45~57 bit signal
             with sig1:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "真空取盒前后移前限信号"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "真空取盒前后移后限信号"
@@ -572,7 +572,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==54: #45~57 bit signal
             with sig2:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "夹手上下移电机上限信号"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "夹手上下移电机下限信号"
@@ -591,7 +591,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==55: #45~57 bit signal
             with sig3:
-                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "副柜左餐具电机位置信号"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "副柜右餐具电机位置信号"
@@ -610,7 +610,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
         elif i==56: #45~57 bit signal
             with sig4:
-                st.markdown("<span style='color:blue'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "中转直线运动模组驱动器报警"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "夹盒升降电机驱动器报警"
