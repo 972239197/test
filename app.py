@@ -220,7 +220,7 @@ class HexParser:
                         st.write(f"微波制作剩余时间 : {nData*256 + bytes_data[i+1]}")
                 elif i==25: #25~44
                     with col1:
-                        st.markdown("<span style='color:red'>冷柜异常码</span>", unsafe_allow_html=True)
+                        st.markdown("<span style='color:red'>冷柜异常码----------</span>", unsafe_allow_html=True)
                         msg_value = "🔴读取冷柜数据异常" if (nData & 0x01) > 0 else "🟢读取冷柜数据异常"
                         st.write(msg_value)
                         msg_value = "🔴保存冷柜数据异常" if (nData & 0x02) > 0 else "🟢保存冷柜数据异常"
@@ -239,6 +239,7 @@ class HexParser:
                         st.write(msg_value)
                 elif i==26: #25~44
                     with col2:
+                        st.markdown("<span style='color:red'>--------------------</span>", unsafe_allow_html=True)
                         msg_value = "🔴冷柜天车侧推电机推出异常" if (nData & 0x01) > 0 else "🟢冷柜天车侧推电机推出异常"
                         st.write(msg_value)
                         msg_value = "🔴冷柜天车侧推电机缩回异常" if (nData & 0x02) > 0 else "🟢冷柜天车侧推电机缩回异常"
