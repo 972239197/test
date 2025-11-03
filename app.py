@@ -274,8 +274,8 @@ example_map = {
 }
 
 # 数据输入区域
-col1 = st.columns()
-with col1:
+col1 = st.columns(1)
+with col1[0]:
         default_hex = example_map.get(example_data, "")
         hex_input = st.text_area(
             "请在输入框中输入十六进制数据",
