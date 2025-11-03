@@ -95,28 +95,29 @@ class HexParser:
                 if i==12:
                     with col1:
                         if int(nData) == 0:
-                            msg_sta = "手动"
+                            msg_value = "手动"
                         elif int(nData) == 1:
-                            msg_sta = "自动"
+                            msg_value = "自动"
                         else:
-                            msg_sta = "老化"
-                        st.write("整机模式 : " + msg_sta)
+                            msg_value = "老化"
+                        st.write("整机模式 : " + msg_value)
                 elif i==13:
                     with col2:
                         if int(nData) == 0:
-                            st.write(f"整机状态 : 未初始化")
+                            msg_value = "未初始化"
                         elif int(nData) == 1:
-                            st.write(f"整机状态 : 初始化中")
+                            msg_value = "初始化中"
                         elif int(nData) == 2:
-                            st.write(f"整机状态 : 初始化完成")
+                            msg_value = "初始化完成"
                         elif int(nData) == 3:
-                            st.write(f"整机状态 : 空闲")
+                            msg_value = "空闲"
                         elif int(nData) == 4:
-                            st.write(f"整机状态 : 运行中")
+                            msg_value = "运行中"
                         elif int(nData) == 5:
-                            st.write(f"整机状态 : 固件升级中")
+                            msg_value = "固件升级中"
                         else:
-                            st.write(f"整机状态 : 异常")
+                            msg_value = "异常"
+                        st.write("整机状态 : " + msg_value)
                 elif i==14:
                     with col3:
                         if int(nData) == 0:
