@@ -215,6 +215,12 @@ class HexParser:
                         else:
                             msg_value = "停止"
                         st.write("微波门状态 : " + msg_value)
+                elif i==23: #23~24
+                    with col2:
+                        st.write(f"微波制作剩余时间 : {nData*256 + bytes_data[i+1]}")
+                elif i==25: #25~44
+                    with col1:
+                        st.write(f"<span style='color:red'>异常码</span>") 
 
 
         except Exception as e:
