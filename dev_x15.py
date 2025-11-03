@@ -475,5 +475,24 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = "⚫"+"中餐具预警" if (nData & 0x80) > 0 else "🟢"+"中餐具预警"
                 st.write(msg_value)
+        elif i==49: #45~57 bit signal
+            with sig1:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = "⚫"+"中转组件前限位" if (nData & 0x01) > 0 else "🟢"+"中转组件前限位"
+                st.write(msg_value)
+                msg_value = "⚫"+"中转组件后限位" if (nData & 0x02) > 0 else "🟢"+"中转组件后限位"
+                st.write(msg_value)
+                msg_value = "⚫"+"中转组件旋转前限位" if (nData & 0x04) > 0 else "🟢"+"中转组件旋转前限位"
+                st.write(msg_value)
+                msg_value = "⚫"+"中转组件旋转后限位" if (nData & 0x08) > 0 else "🟢"+"中转组件旋转后限位"
+                st.write(msg_value)
+                msg_value = "⚫"+"中转组件高位餐盒检测" if (nData & 0x10) > 0 else "🟢"+"中转组件高位餐盒检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"中转组件低位餐盒检测" if (nData & 0x20) > 0 else "🟢"+"中转组件低位餐盒检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"1号暂存位检测" if (nData & 0x40) > 0 else "🟢"+"1号暂存位检测"
+                st.write(msg_value)
+                msg_value = "⚫"+"2号暂存位检测" if (nData & 0x80) > 0 else "🟢"+"2号暂存位检测"
+                st.write(msg_value)
 
     return {"finish"}
