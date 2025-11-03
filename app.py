@@ -237,6 +237,24 @@ class HexParser:
                         st.write(msg_value)
                         msg_value = "🔴冷柜天车Y轴驱动器报警" if (nData & 0x80) > 0 else "🟢冷柜天车Y轴驱动器报警"
                         st.write(msg_value)
+                elif i==26: #25~44
+                    with col2:
+                        msg_value = "🔴冷柜天车侧推电机推出异常" if (nData & 0x01) > 0 else "🟢冷柜天车侧推电机推出异常"
+                        st.write(msg_value)
+                        msg_value = "🔴冷柜天车侧推电机缩回异常" if (nData & 0x02) > 0 else "🟢冷柜天车侧推电机缩回异常"
+                        st.write(msg_value)
+                        msg_value = "🔴开冷柜侧门异常" if (nData & 0x04) > 0 else "🟢开冷柜侧门异常"
+                        st.write(msg_value)
+                        msg_value = "🔴关冷柜侧门异常" if (nData & 0x08) > 0 else "🟢关冷柜侧门异常"
+                        st.write(msg_value)
+                        msg_value = "🔴冷柜天车餐盒破搭边异常" if (nData & 0x10) > 0 else "🟢冷柜天车餐盒破搭边异常"
+                        st.write(msg_value)
+                        msg_value = "🔴预留" if (nData & 0x20) > 0 else "🟢预留"
+                        st.write(msg_value)
+                        msg_value = "🔴预留" if (nData & 0x40) > 0 else "🟢预留"
+                        st.write(msg_value)
+                        msg_value = "🔴中转直线运动模组回原点错误" if (nData & 0x80) > 0 else "🟢中转直线运动模组回原点错误"
+                        st.write(msg_value)
 
 
         except Exception as e:
