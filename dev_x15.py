@@ -132,9 +132,9 @@ def parse_array_data(bytes_data) :
             with col2:
                 st.write(f"微波制作剩余时间 : {nData*256 + bytes_data[i+1]}")
             with col3:
-                st.write(" ")
+                st.write(f" ")
             with col4:
-                st.write(" ")
+                st.write(f" ")
         elif i==25: #25~44
             with col1:
                 st.markdown("<span style='color:red'>冷柜异常码--------------------</span>", unsafe_allow_html=True)
