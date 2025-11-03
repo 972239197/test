@@ -72,13 +72,13 @@ class HexParser:
             bytes_data = HexParser.hex_to_bytes(hex_data)
             # 根据选择的选项进行解析
             if "Xmini" in selected_dev:
-                st.markdown("""暂未开放""")
+                st.write(f"{selected_dev} 暂未开放该功能")
             elif "X1.3重构" in selected_dev:
-                st.markdown("""暂未开放""")
+                st.write(f"{selected_dev} 暂未开放该功能")
             elif "X1.5" in selected_dev:
                 dev_x15.parse_array_data(bytes_data)
             elif "Xmicrowave" in selected_dev:
-                st.markdown("""暂未开放""")
+                st.write(f"{selected_dev} 暂未开放该功能")
 
             # results = {}
             
