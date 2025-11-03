@@ -398,5 +398,24 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = "🔴打包模组复位失败" if (nData & 0x80) > 0 else "🟢打包模组复位失败"
                 st.write(msg_value)
+        elif i==45: #45~57 bit signal
+            with col1:
+                st.markdown("<span style='color:red'>----------信号传感器----------</span>", unsafe_allow_html=True)
+                msg_value = "🔴"+"调料柜门上限位" if (nData & 0x01) > 0 else "🟢"+"调料柜门上限位"
+                st.write(msg_value)
+                msg_value = "🔴"+"调料柜门下限位" if (nData & 0x02) > 0 else "🟢"+"调料柜门下限位"
+                st.write(msg_value)
+                msg_value = "🔴"+"调料柜货道光纤" if (nData & 0x04) > 0 else "🟢"+"调料柜货道光纤"
+                st.write(msg_value)
+                msg_value = "🔴"+"调料柜门安全光栅" if (nData & 0x08) > 0 else "🟢"+"调料柜门安全光栅"
+                st.write(msg_value)
+                msg_value = "🔴"+"冷柜天车侧推右限" if (nData & 0x10) > 0 else "🟢"+"冷柜天车侧推右限"
+                st.write(msg_value)
+                msg_value = "🔴"+"冷柜天车侧推左限位(原点)" if (nData & 0x20) > 0 else "🟢"+"冷柜天车侧推左限位(原点)"
+                st.write(msg_value)
+                msg_value = "🔴"+"冷柜天车餐盒姿态传感器(内)" if (nData & 0x40) > 0 else "🟢"+"冷柜天车餐盒姿态传感器(内)"
+                st.write(msg_value)
+                msg_value = "🔴"+"冷柜天车中间传感器(中)" if (nData & 0x80) > 0 else "🟢"+"冷柜天车中间传感器(中)"
+                st.write(msg_value)
 
     return {"finish"}
