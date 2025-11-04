@@ -10,7 +10,7 @@ def parse_array_data(bytes_data) :
         if i==12:
             with col1:
                 if int(nData) == 0:
-                    msg_value = "🔴手动"
+                    msg_value = "🟠手动"
                 elif int(nData) == 1:
                     msg_value = "🟢自动"
                 else:
@@ -31,7 +31,7 @@ def parse_array_data(bytes_data) :
                 elif int(nData) == 5:
                     msg_value = "固件升级中"
                 elif int(nData) == 6:
-                    msg_value = "异常"    
+                    msg_value = "异常🔴"    
                 else:
                     msg_value = "其他"
                 st.write("整机状态 : " + msg_value)
