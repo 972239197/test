@@ -216,7 +216,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x02) > 0 else "🟢") + "中转组件来接盒位启动超时"
                 st.write(msg_value)
-                msg_value = ("🔴" if (nData & 0x04) > 0 else "🟢") + "预留"
+                msg_value = ("🔴" if (nData & 0x04) > 0 else "🟢") + "开冷柜侧门启动超时"
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x08) > 0 else "🟢") + "预留"
                 st.write(msg_value)
