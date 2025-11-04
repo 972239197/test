@@ -4,7 +4,7 @@ import re
 from typing import Dict, List, Any
 
 from io import StringIO
-
+import dev_x13
 import dev_x15
 
 # 页面配置
@@ -71,7 +71,7 @@ class HexParser:
             if "Xmini" in selected_dev:
                 st.write(f"{selected_dev} 暂未开放该功能")
             elif "X1.3重构" in selected_dev:
-                st.write(f"{selected_dev} 暂未开放该功能")
+                dev_x13.parse_array_data(bytes_data)
             elif "X1.5" in selected_dev:
                 dev_x15.parse_array_data(bytes_data)
             elif "Xmicrowave" in selected_dev:
