@@ -6,6 +6,7 @@ from typing import Dict, List, Any
 from io import StringIO
 import dev_x13
 import dev_x15
+import dev_xmini
 
 # 页面配置
 st.set_page_config(
@@ -69,7 +70,7 @@ class HexParser:
             bytes_data = HexParser.hex_to_bytes(hex_data)
             # 根据选择的选项进行解析
             if "Xmini" in selected_dev:
-                st.write(f"{selected_dev} 暂未开放该功能")
+                dev_xmini.parse_array_data(bytes_data)
             elif "X1.3重构" in selected_dev:
                 dev_x13.parse_array_data(bytes_data)
             elif "X1.5" in selected_dev:
