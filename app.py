@@ -16,9 +16,15 @@ st.set_page_config(
     layout="wide"
 )
 
-# 标题和描述
+# 标题和描述--设置居中
+st.markdown("""
+<style>
+div[data-testid="stTitle"] {
+    text-align: center;
+}
+</style>
+""", unsafe_allow_html=True)
 
-# 标题和描述
 st.title("🔢 库盒数据解析器")
 # st.markdown("""
 # 这是一个强大的数组解析工具
