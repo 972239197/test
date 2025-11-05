@@ -492,7 +492,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "副柜X轴驱动报警"
                 st.write(msg_value)
         elif i==21: #17~27 bit signal
             with sig1:
@@ -505,32 +505,32 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "中转组件低位餐盒检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "上层暂存位左检测"
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "1号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "上层暂存位右检测"
+                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "2号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "下层暂存位左检测"
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "3号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "下层暂存位右检测"
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "4号暂存位检测"
                 st.write(msg_value)
         elif i==22: #17~27 bit signal
             with sig2:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
-                msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "暂存平台左限位"
+                msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "5号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "暂存平台右限位"
+                msg_value = ("⚫" if (nData & 0x02) > 0 else "🟢") + "6号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x04) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x04) > 0 else "🟢") + "7号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "8号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "9号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "10号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "11号暂存位检测"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "12号暂存位检测"
                 st.write(msg_value)
         elif i==23: #17~27 bit signal
             with sig3:
@@ -562,11 +562,11 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "副柜取餐门开门限位"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "副柜天车X轴左限位"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "副柜天车X轴右限位(原点)"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "预留"
+                msg_value = ("⚫" if (nData & 0x40) > 0 else "🟢") + "餐盒变形检测"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
@@ -630,4 +630,5 @@ def parse_array_data(bytes_data) :
         
 
     return {"finish"}
+
 
