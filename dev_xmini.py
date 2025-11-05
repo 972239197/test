@@ -31,7 +31,7 @@ def parse_array_data(bytes_data) :
                 elif int(nData) == 5:
                     msg_value = "固件升级中"
                 elif int(nData) == 6:
-                    msg_value = "异常🔴"    
+                    msg_value = "🔴异常"    
                 else:
                     msg_value = "其他"
                 st.write("整机状态 : " + msg_value)
@@ -50,7 +50,7 @@ def parse_array_data(bytes_data) :
                 elif int(nData) == 5:
                     msg_value = "固件升级中"
                 elif int(nData) == 6:
-                    msg_value = "异常"    
+                    msg_value = "🔴异常"    
                 else:
                     msg_value = "其他"
                 st.write("冷柜天车状态 : " + msg_value)
@@ -69,7 +69,7 @@ def parse_array_data(bytes_data) :
                 elif int(nData) == 5:
                     msg_value = "固件升级中"
                 elif int(nData) == 6:
-                    msg_value = "异常"    
+                    msg_value = "🔴异常"    
                 else:
                     msg_value = "其他"
                 st.write("副柜天车状态 : " + msg_value)
@@ -88,7 +88,7 @@ def parse_array_data(bytes_data) :
                 elif int(nData) == 5:
                     msg_value = "固件升级中"
                 elif int(nData) == 6:
-                    msg_value = "异常"    
+                    msg_value = "🔴异常"    
                 else:
                     msg_value = "其他"
                 st.write("打包出餐模组状态 : " + msg_value)
