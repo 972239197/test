@@ -1,6 +1,6 @@
 import streamlit as st
 import ctypes
-
+#mini
 def parse_array_data(bytes_data) :
     # return results
     col1, col2, col3, col4 = st.columns([1, 1, 1, 1])  #等宽列
