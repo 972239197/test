@@ -19,7 +19,7 @@ st.set_page_config(
 # 标题和描述--设置居中
 st.markdown("""
 <style>
-div[data-testid="stTitle"] {
+h1 {
     text-align: center;
 }
 </style>
