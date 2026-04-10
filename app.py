@@ -95,8 +95,8 @@ class HexParser:
                 dev_x15.parse_array_data(bytes_data)
             elif "Xmicrowave" in selected_dev:
                 st.write(f"{selected_dev} 暂未开放该功能")
-
-            # results = {}
+            else:
+                st.write(f"{selected_dev} 该选项为空")
             
         except Exception as e:
             return {"错误": f"整数解析失败: {str(e)}"}

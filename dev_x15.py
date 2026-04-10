@@ -204,7 +204,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "冷柜天车Y轴驱动器报警"
                 st.write(msg_value)
-        elif i==49: #25~44
+        elif i==49:
             with err2:
                 st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "冷柜天车侧推电机推出异常"
