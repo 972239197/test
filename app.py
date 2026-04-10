@@ -34,7 +34,7 @@ st.title("🔢 库盒数据解析器")
 st.header("请选择设备类型")
 
 # 选项数据
-dev_type = ["Xmini", "Mini多暂存位", "X1.3重构", "X1.5", "Xmicrowave"]
+dev_type = ["Xmini", "Mini多暂存位", "X1.3重构", "X1.5", "X2.0", "Xmicrowave"]
 
 # 多选下拉菜单
 selected_dev = st.selectbox(
@@ -90,6 +90,8 @@ class HexParser:
             elif "X1.3重构" in selected_dev:
                 dev_x13.parse_array_data(bytes_data)
             elif "X1.5" in selected_dev:
+                dev_x15.parse_array_data(bytes_data)
+            elif "X2.0" in selected_dev:
                 dev_x15.parse_array_data(bytes_data)
             elif "Xmicrowave" in selected_dev:
                 st.write(f"{selected_dev} 暂未开放该功能")
