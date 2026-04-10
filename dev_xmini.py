@@ -7,7 +7,7 @@ def parse_array_data(bytes_data) :
     err1, err2, err3, err4 = st.columns([1, 1, 1, 1])
     sig1, sig2, sig3, sig4 = st.columns([1, 1, 1, 1])
     for i, nData in enumerate(bytes_data):
-        if i==12:
+        if i==0:
             with col1:
                 if int(nData) == 0:
                     msg_value = "🟠手动"
@@ -16,7 +16,7 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "🔵老化"
                 st.write("整机模式 : " + msg_value)
-        elif i==13:
+        elif i==1:
             with col2:
                 if int(nData) == 0:
                     msg_value = "未初始化"
@@ -35,7 +35,7 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "其他"
                 st.write("整机状态 : " + msg_value)
-        elif i==14:
+        elif i==2:
             with col3:
                 if int(nData) == 0:
                     msg_value = "未初始化"
@@ -54,7 +54,7 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "其他"
                 st.write("冷柜天车状态 : " + msg_value)
-        elif i==15:
+        elif i==3:
             with col4:
                 if int(nData) == 0:
                     msg_value = "未初始化"
@@ -73,7 +73,7 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "其他"
                 st.write("副柜天车状态 : " + msg_value)
-        elif i==16:
+        elif i==4:
             with col1:
                 if int(nData) == 0:
                     msg_value = "未初始化"
@@ -92,13 +92,13 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "其他"
                 st.write("打包出餐模组状态 : " + msg_value)
-        elif i==28: #28~29
+        elif i==16: #16~17 (原28~29)
             with col2:
                 st.write(f"冷柜温度 : {ctypes.c_int16(nData*256 + bytes_data[i+1]).value}")
-        elif i==57: #57~58
+        elif i==45: #45~46 (原57~58)
             with col3:
                 st.write(f"调料柜温度 : {ctypes.c_int16(nData*256 + bytes_data[i+1]).value}")
-        elif i==53:
+        elif i==41:
             with col4:
                 if int(nData) == 0:
                     msg_value = "空闲"
@@ -121,7 +121,7 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "预留"
                 st.write("微波仓状态 : " + msg_value)
-        elif i==54:
+        elif i==42:
             with col1:
                 if int(nData) == 0:
                     msg_value = "已关闭"
@@ -138,10 +138,10 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "停止"
                 st.write("微波门状态 : " + msg_value)
-        elif i==55: #55~56
+        elif i==43: #43~44 (原55~56)
             with col2:
                 st.write(f"微波制作剩余时间 : {nData*256 + bytes_data[i+1]}")
-        elif i==59: #微波1号电源故障码
+        elif i==47: #微波1号电源故障码 (原59)
             with col3:
                 if int(nData) == 0:
                     msg_value = "无故障"
@@ -156,7 +156,7 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "其他"
                 st.write("微波1号电源故障码 : " + msg_value)
-        elif i==60: #微波2号电源故障码
+        elif i==48: #微波2号电源故障码 (原60)
             with col4:
                 if int(nData) == 0:
                     msg_value = "无故障"
@@ -171,7 +171,21 @@ def parse_array_data(bytes_data) :
                 else:
                     msg_value = "其他"
                 st.write("微波2号电源故障码 : " + msg_value)
-        elif i==31: #30~52
+        elif i==49: #微波电源通信状态
+            with col1:
+                if int(nData) == 0:
+                    msg_value = "正常"
+                else:
+                    msg_value = "异常"
+                st.write("微波电源通信状态 : " + msg_value)
+        elif i==50: #冷柜调料柜门光栅状态
+            with col2:
+                if int(nData) == 0:
+                    msg_value = "未触发"
+                else:
+                    msg_value = "触发"
+                st.write("冷调料柜门 : " + msg_value)
+        elif i==19: #18~40 (原30~52)
             with err1:
                 st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "读取冷柜数据异常"
@@ -190,7 +204,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "冷柜天车侧推电机推出异常"
                 st.write(msg_value)
-        elif i==32: #30~52
+        elif i==20: #18~40 (原30~52)
             with err2:
                 st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "冷柜天车侧推电机缩回异常"
@@ -209,7 +223,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "中转组件去送盒位超时"
                 st.write(msg_value)
-        elif i==33: #30~52
+        elif i==21: #18~40 (原30~52)
             with err3:
                 st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "中转组件低位传感器异常"
@@ -228,7 +242,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-        elif i==40: #30~52
+        elif i==28: #18~40 (原30~52)
             with err4:
                 st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "副柜天车夹盒电机报警"
@@ -247,7 +261,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "直线模组电机报警"
                 st.write(msg_value)
-        elif i==41: #30~52
+        elif i==29: #18~40 (原30~52)
             with err1:
                 st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "直线模组回原超时"
@@ -266,7 +280,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "右餐具运动超时"
                 st.write(msg_value)
-        elif i==42: #30~52
+        elif i==30: #18~40 (原30~52)
             with err2:
                 st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "右餐具取空"
@@ -285,7 +299,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "调料货道2运动超时"
                 st.write(msg_value)
-        elif i==43: #30~52
+        elif i==31: #18~40 (原30~52)
             with err3:
                 st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "调料货道3电机报警"
@@ -304,7 +318,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "调料货道6运动超时"
                 st.write(msg_value)
-        elif i==44: #30~52
+        elif i==32: #18~40 (原30~52)
             with err4:
                 st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "调料货道7电机报警"
@@ -323,7 +337,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "写副柜flash坐标失败"
                 st.write(msg_value)
-        elif i==45: #30~52
+        elif i==33: #30~52
             with err1:
                 st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "副柜天车目标位取盒失败"
@@ -342,7 +356,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "副柜天车y轴位置异常"
                 st.write(msg_value)
-        elif i==46: #30~52
+        elif i==34: #30~52
             with err2:
                 st.markdown("<span style='color:red'>----------副柜异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "副柜天车叉子位置异常"
@@ -361,7 +375,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-        elif i==49: #30~52
+        elif i==37: #30~52
             with err3:
                 st.markdown("<span style='color:red'>----------打包模组异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "出餐电机伸出超时"
@@ -380,7 +394,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "餐门关闭超时"
                 st.write(msg_value)
-        elif i==50: #30~52
+        elif i==38: #30~52
             with err4:
                 st.markdown("<span style='color:red'>----------打包模组异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "出餐电机原点传感器异常"
@@ -399,7 +413,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "餐门限位传感器异常"
                 st.write(msg_value)
-        elif i==51: #30~52
+        elif i==39: #30~52
             with err1:
                 st.markdown("<span style='color:red'>----------打包模组异常码----------</span>", unsafe_allow_html=True)
                 msg_value = ("🔴" if (nData & 0x01) > 0 else "🟢") + "餐门所有传感器异常"
@@ -418,7 +432,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("🔴" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-        elif i==17: #17~27 bit signal
+        elif i==5: #17~27 bit signal
             with sig1:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "调料柜门上限位"
@@ -437,7 +451,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "冷柜天车中间传感器(中)"
                 st.write(msg_value)
-        elif i==18: #17~27 bit signal
+        elif i==6: #17~27 bit signal
             with sig2:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "冷柜天车餐盒到位传感器(外)"
@@ -456,7 +470,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-        elif i==19: #17~27 bit signal
+        elif i==7: #17~27 bit signal
             with sig3:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "吸盘升降上限位(原点)"
@@ -475,7 +489,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "出餐电机后限位(原点)"
                 st.write(msg_value)
-        elif i==20: #17~27 bit signal
+        elif i==8: #17~27 bit signal
             with sig4:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "餐盒取走检测"
@@ -494,7 +508,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-        elif i==21: #17~27 bit signal
+        elif i==9: #17~27 bit signal
             with sig1:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "中转组件前限位"
@@ -513,7 +527,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "下层暂存位右检测"
                 st.write(msg_value)
-        elif i==22: #17~27 bit signal
+        elif i==10: #17~27 bit signal
             with sig2:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "暂存平台左限位"
@@ -532,7 +546,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-        elif i==23: #17~27 bit signal
+        elif i==11: #17~27 bit signal
             with sig3:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "副柜天车Y轴上限位"
@@ -551,7 +565,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "副柜门控开关"
                 st.write(msg_value)
-        elif i==24: #17~27 bit signal
+        elif i==12: #17~27 bit signal
             with sig4:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "副柜取餐门安全光栅"
@@ -570,7 +584,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-        elif i==25: #17~27 bit signal
+        elif i==13: #17~27 bit signal
             with sig1:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "冷柜侧门关门传感器"
@@ -589,7 +603,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "出餐平台电机驱动报警"
                 st.write(msg_value)
-        elif i==26: #17~27 bit signal
+        elif i==14: #17~27 bit signal
             with sig2:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "副柜天车叉子电机驱动报警"
@@ -608,7 +622,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x80) > 0 else "🟢") + "预留"
                 st.write(msg_value)
-        elif i==27: #17~27 bit signal
+        elif i==15: #17~27 bit signal
             with sig3:
                 st.markdown("<span style='color:blue'>----------传感器信号----------</span>", unsafe_allow_html=True)
                 msg_value = ("⚫" if (nData & 0x01) > 0 else "🟢") + "左餐具电机位置信号"
