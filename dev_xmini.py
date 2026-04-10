@@ -184,7 +184,7 @@ def parse_array_data(bytes_data) :
                     msg_value = "未触发"
                 else:
                     msg_value = "触发"
-                st.write("冷调料柜门 : " + msg_value)
+                st.write("冷调料柜门光栅 : " + msg_value)
         elif i==19: #18~40 (原30~52)
             with err1:
                 st.markdown("<span style='color:red'>----------冷柜异常码----------</span>", unsafe_allow_html=True)
