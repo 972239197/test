@@ -557,7 +557,7 @@ def parse_array_data(bytes_data) :
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x08) > 0 else "🟢") + "副柜天车叉子后限位(原点)"
                 st.write(msg_value)
-                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "副柜天车夹盒电机张开限位(原点)"
+                msg_value = ("⚫" if (nData & 0x10) > 0 else "🟢") + "副柜天车夹盒电机张开(原点)"
                 st.write(msg_value)
                 msg_value = ("⚫" if (nData & 0x20) > 0 else "🟢") + "副柜天车夹盒电机夹紧限位"
                 st.write(msg_value)

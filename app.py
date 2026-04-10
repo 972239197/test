@@ -74,13 +74,13 @@ class HexParser:
     def parse_integers(hex_data: str) -> Dict[str, Any]:
         """解析整数类型"""
         try:
-            bytes_data = HexParser.hex_to_bytes(hex_data)
+            bytes_datas = HexParser.hex_to_bytes(hex_data)
              # 截取前12个字节并丢弃，使用剩余部分
-            if len(bytes_data) > 12:
-                bytes_data = bytes_data[12:]
+            if len(bytes_datas) > 12:
+                bytes_data = bytes_datas[12:]
             else:
                 # 如果数据长度不足12字节，返回错误
-                return {"错误": f"数据长度不足12字节,实际长度: {len(bytes_data)}"}
+                return {"错误": f"数据长度不足12字节,实际长度: {len(bytes_datas)}"}
             
             # 根据选择的选项进行解析
             if "Xmini" in selected_dev:
